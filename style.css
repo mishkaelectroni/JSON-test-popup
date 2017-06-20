@@ -7,17 +7,16 @@ body {
 	margin:0;
 	padding: 0;
 }
-#panel {
-	width: 400px;
-	height: 300px;
-	color: #000;
 
-}
 #messages {
 	display: block;
-	width: 300px;
+	position: absolute;
+    bottom: 3%;
+    right: 3%;
+	width: 330px;
 	border: #F3F3F3 solid;
-	border-radius: 3px;
+	border-radius: 5px;
+	z-index: 101;
 }
 #messages img {
 	width:50px;
@@ -28,15 +27,24 @@ body {
 	list-style: none;
 }
 .cross-icon {
-	float: right;
-	width: 25px;
-	height: 25px;
+	position: fixed;
+    right: 2%;
+    bottom: 2%;
+	width: 27px;
+	height: 27px;
 	border-radius: 50%;
 	background-color: #01A7FC;
 	color: #fff;
+	box-shadow: 3px #fff;
 }
 .cross-icon h4 {
-	padding-left: 8px;
+	padding-left: 10px;
+	padding-top: 2px;
+	font-weight: 200;
+}
+.cross-icon:hover {
+	cursor: pointer;
+	opacity: 0.4;
 }
 .letter-icon {
 	float: right;
@@ -46,14 +54,35 @@ body {
 	background-color: #01A7FC;
 	color: #fff;
 	display: none;
+	position: absolute;
+    bottom: 2%;
+    right: 2%;
 }
 .letter-icon h4 {
 	padding-left: 9px;
 	padding-top: 5px;
 }
-
+.letter-icon:hover {
+	cursor: pointer;
+	opacity: 0.4;
+}
 #popup-panel {
 	display: block;
 	list-style: none;
-	
+	background-color: #F3F3F3;
+}
+#popup-panel p {
+	padding: 0.5em;
+	background-color: #fff;
+}
+#popup-panel span {
+	display: inline-block;
+    float: right;
+    margin-right: 31%;
+    margin-top: 4%;
+    font-size: 0.8em;
+}
+#popup-panel img {	
+	margin-left: 3%;
+	padding: 0.5em;
 }
