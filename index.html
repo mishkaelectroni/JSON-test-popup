@@ -5,19 +5,24 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script>
 			
-        jQuery(function($) {	
-			$(function(){
-			    $.getJSON('https://dev.nexusmedia-ua.com/devtest/', function(data) {
-			            for(var i=0;i<data.messages.length;i++){
-			                $('#messages').append('<ul id="popup-panel"><li><img src="' + data.messages[i].image + '">' + data.messages[i].name + '<small>' + data.messages[i].title + '</small></li>' + '<p>' + data.messages[i].message + '</p></li></ul>');
-			            }
-			    });
-			    $('.cross-icon').click(function() {
-			    	$('#messages').fadeOut('slow', function() {
-			    		$('.letter-icon').fadeIn('slow');
-			    	});	
-			    });
-			});
+        jQuery(function($) {
+        	$(document).ready(function() {
+				$(function(){
+				    $.getJSON('https://dev.nexusmedia-ua.com/devtest/', function(data) {
+				            for(var i=0;i<data.messages.length;i++){
+				                $('#messages').append('<ul id="popup-panel"><li><img src="' + data.messages[i].image + '">' + data.messages[i].name + '<small>' + data.messages[i].title + '</small></li>' + '<p>' + data.messages[i].message + '</p></li></ul>');
+				            }
+				    });
+				    $('.cross-icon').click(function() {
+				    	$('#messages').fadeOut('slow');				    		
+				    	$('.letter-icon').css('display', 'block');				    	
+				    });	
+				   	$('.letter-icon').click(function() {
+				   		$('#messages').fadeIn('slow');
+				   		$('.letter-icon').css('display', 'none');
+				   	});	   
+				});
+			});	
 		});
 			
         </script>
@@ -27,7 +32,8 @@
 
 	<div id="messages">
 		<div class="cross-icon"><h4>x</h4></div>
-		<div class="letter-icon"> <h4>&#9993</h4></div>
+		
 	</div>
+	<div class="letter-icon"> <h4>&#9993</h4></div>
 </body>
 </html> 
