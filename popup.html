@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>popup module</title>
+	<style type="text/css">
+		* {
+	margin: 0;
+	padding: 0;
+		}
+		body {
+			width: 100%;
+			margin:0;
+			padding: 0;
+		}
+
+		#messages {
+			display: block;
+			position: absolute;
+		    bottom: 3%;
+		    right: 3%;
+			width: 330px;
+			border: #F3F3F3 solid;
+			border-radius: 5px;
+			z-index: 101;
+		}
+		#messages img {
+			width:50px;
+			height:50px;
+			border-radius:50%;
+		}
+		#messages ul {
+			list-style: none;
+		}
+		.cross-icon {
+			position: fixed;
+		    right: 2%;
+		    bottom: 2%;
+			width: 27px;
+			height: 27px;
+			border-radius: 50%;
+			background-color: #01A7FC;
+			color: #fff;
+			box-shadow: 3px #fff;
+		}
+		.cross-icon h4 {
+			padding-left: 10px;
+			padding-top: 2px;
+			font-weight: 200;
+		}
+		.cross-icon:hover {
+			cursor: pointer;
+			opacity: 0.4;
+		}
+		.letter-icon {
+			float: right;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			background-color: #01A7FC;
+			color: #fff;
+			display: none;
+			position: absolute;
+		    bottom: 2%;
+		    right: 2%;
+		}
+		.letter-icon h4 {
+			padding-left: 9px;
+			padding-top: 5px;
+		}
+		.letter-icon:hover {
+			cursor: pointer;
+			opacity: 0.4;
+		}
+		#popup-panel {
+			display: block;
+			list-style: none;
+			background-color: #F3F3F3;
+		}
+		#popup-panel p {
+			padding: 0.5em;
+			background-color: #fff;
+		}
+		#popup-panel span {
+			display: inline-block;
+		    float: right;
+		    margin-right: 31%;
+		    margin-top: 4%;
+		    font-size: 0.8em;
+		}
+		#popup-panel img {	
+			margin-left: 3%;
+			padding: 0.5em;
+		}
+	</style>
+</head>
+<body>
+	<div id="messages">
+		<div class="cross-icon"><h4>x</h4></div>		
+	</div>
+	<div class="letter-icon"> <h4>&#9993</h4></div>
+<script type="text/javascript">
+
+	var xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https://dev.nexusmedia-ua.com/devtest/', true);
+
+xhr.send();
+
+xhr.onreadystatechange = function() {
+  if (this.readyState != 4) return;
+  if (this.status != 200) {
+    // обработать ошибку
+    alert( 'ошибка: ' + (this.status ? this.statusText : 'запрос не удался') );
+    return;
+  }
+
+  var url = JSON.parse(this.responseText);
+  for (var i=0; i<url.messages.length; i++){
+  	document.write('<div id="messages"><ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul></div>');
+  }
+}			
+</script>
+
+</body>
+</html>
