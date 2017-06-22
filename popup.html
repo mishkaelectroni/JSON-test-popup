@@ -32,7 +32,8 @@
 		#messages ul {
 			list-style: none;
 		}
-		.cross-icon {
+		#cross-icon {
+			display: block;
 			position: fixed;
 		    right: 2%;
 		    bottom: 2%;
@@ -44,19 +45,22 @@
 			box-shadow: 3px #fff;
 			z-index: 110;
 		}
-		.cross-icon h4 {
+		#cross-icon a {
+			text-decoration: none;
+			color: #fff;
+			font-size: 1.1em;
 			padding-left: 10px;
-			padding-top: 2px;
+			padding-top: 4px;
 			font-weight: 200;
 		}
-		.cross-icon:hover {
+		#cross-icon:hover {
 			cursor: pointer;
 			opacity: 0.4;
 		}
-		.letter-icon {
+		#letter-icon {
 			float: right;
-			width: 35px;
-			height: 35px;
+			width: 45px;
+			height: 45px;
 			border-radius: 50%;
 			background-color: #01A7FC;
 			color: #fff;
@@ -65,11 +69,14 @@
 		    bottom: 2%;
 		    right: 2%;
 		}
-		.letter-icon h4 {
-			padding-left: 9px;
-			padding-top: 5px;
+		#letter-icon a {
+			text-decoration: none;
+			color: #fff;
+			font-size: 1.7em;
+    		padding-left: 10px;
+			font-weight: 500;
 		}
-		.letter-icon:hover {
+		#letter-icon:hover {
 			cursor: pointer;
 			opacity: 0.4;
 		}
@@ -94,10 +101,70 @@
 			padding: 0.5em;
 		}
 	</style>
+	<script type="text/javascript">
 
+window.onload = function() {
+	var xhr = new XMLHttpRequest();
+
+	xhr.open('GET', 'https://dev.nexusmedia-ua.com/devtest/', true);
+
+	xhr.send();
+
+	xhr.onreadystatechange = function() {
+	  if (this.readyState != 4) return;
+	  if (this.status != 200) {
+	    // обработать ошибку
+	    alert( 'ошибка: ' + (this.status ? this.statusText : 'запрос не удался') );
+	    return;
+	  }
+
+	  var url = JSON.parse(this.responseText);
+	  for (var i=0; i<url.messages.length; i++){
+	  	var messages = document.getElementById('messages');
+	  	messages.innerHTML = '<ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul>';
+	  }
+	}
+	
+
+}	
+ // cross.onclick = function(){
+	// 	var messages = document.getElementById("messages");
+	// 	var letter = document.getElementById("letter-icon");
+	// 	var cross = document.getElementById("cross-icon");
+				
+
+	// }	
+	
+
+	function togglePopup(){
+		var messages = document.getElementById("messages");
+		var letter = document.getElementById("letter-icon");
+		var cross = document.getElementById("cross-icon");
+		
+			if(messages.style.display == "block") {
+				messages.style.display = "none";
+				cross.style.display = "none";
+				letter.style.display = "block";
+				
+			}
+			else {
+				messages.style.display = "block";
+				cross.style.display = "block";
+				letter.style.display = "none";
+			}
+
+	}
+</script>
 </head>
 <body>
-<script type="text/javascript">
+
+	<div id="messages">	
+				
+	</div>
+	<div id="cross-icon" ><a href="#" onclick="togglePopup(); return false;">x</a></div>
+	<div id="letter-icon"><a href="#" onclick="togglePopup(); return false;">&#9993</a> </div>
+
+<!-- <script type="text/javascript">
 
 window.onload = function() {
 	var xhr = new XMLHttpRequest();
@@ -120,38 +187,49 @@ window.onload = function() {
 	  	var messages = document.getElementById('messages');
 	  	messages.innerHTML = '<ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul>';
 	  }
-	}	
+	}
+	function togglePopup(){
+		var elm = document.getElementById("messages");
+		var letter = document.getElementById("letter-icon");
+		if(elm) {
+			if(elm.style.display == "block") {
+				elm.style.display = "none";
+				letter.style.display = "block";
+			}
+			else {
+				elm.style.display = "block";
+				letter.style.display = "none";
+			}
+
+		}
+	}
+
 }		
-
-// window.onload = function() {
-// 	var xhr = new XMLHttpRequest();
-
-
-// 	xhr.open('GET', 'https://dev.nexusmedia-ua.com/devtest/', true);
-
-// 	xhr.send();
-
-// 	xhr.onreadystatechange = function() {
-// 	  if (this.readyState != 4) return;
-// 	  if (this.status != 200) {
-// 	    // обработать ошибку
-// 	    alert( 'ошибка: ' + (this.status ? this.statusText : 'запрос не удался') );
-// 	    return;
-// 	  }
-
-// 	  var url = JSON.parse(this.responseText);
-// 	  for (var i=0; i<url.messages.length; i++){
-// 	  	document.write('<div id="messages"><ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul></div>');
-// 	  }
-// 	}	
-// }	
-</script>
-	<div id="messages">	
-				
-	</div>
-	<div class="cross-icon"><h4>x</h4></div>
-	<div class="letter-icon"> <h4>&#9993</h4></div>
-
-
+	
+</script> -->
 </body>
 </html>
+
+<!-- window.onload = function() {
+	var xhr = new XMLHttpRequest();
+
+
+	xhr.open('GET', 'https://dev.nexusmedia-ua.com/devtest/', true);
+
+	xhr.send();
+
+	xhr.onreadystatechange = function() {
+	  if (this.readyState != 4) return;
+	  if (this.status != 200) {
+	    // обработать ошибку
+	    alert( 'ошибка: ' + (this.status ? this.statusText : 'запрос не удался') );
+	    return;
+	  }
+
+	  var url = JSON.parse(this.responseText);
+	  for (var i=0; i<url.messages.length; i++){
+	  	var messages = document.getElementById('messages');
+	  	messages.innerHTML = '<ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul>';
+	  }
+	}	
+}		 -->
