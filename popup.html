@@ -126,15 +126,7 @@ window.onload = function() {
 	}
 	
 
-}	
- // cross.onclick = function(){
-	// 	var messages = document.getElementById("messages");
-	// 	var letter = document.getElementById("letter-icon");
-	// 	var cross = document.getElementById("cross-icon");
-				
-
-	// }	
-	
+}	 
 
 	function togglePopup(){
 		var messages = document.getElementById("messages");
@@ -164,72 +156,6 @@ window.onload = function() {
 	<div id="cross-icon" ><a href="#" onclick="togglePopup(); return false;">x</a></div>
 	<div id="letter-icon"><a href="#" onclick="togglePopup(); return false;">&#9993</a> </div>
 
-<!-- <script type="text/javascript">
-
-window.onload = function() {
-	var xhr = new XMLHttpRequest();
-
-
-	xhr.open('GET', 'https://dev.nexusmedia-ua.com/devtest/', true);
-
-	xhr.send();
-
-	xhr.onreadystatechange = function() {
-	  if (this.readyState != 4) return;
-	  if (this.status != 200) {
-	    // обработать ошибку
-	    alert( 'ошибка: ' + (this.status ? this.statusText : 'запрос не удался') );
-	    return;
-	  }
-
-	  var url = JSON.parse(this.responseText);
-	  for (var i=0; i<url.messages.length; i++){
-	  	var messages = document.getElementById('messages');
-	  	messages.innerHTML = '<ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul>';
-	  }
-	}
-	function togglePopup(){
-		var elm = document.getElementById("messages");
-		var letter = document.getElementById("letter-icon");
-		if(elm) {
-			if(elm.style.display == "block") {
-				elm.style.display = "none";
-				letter.style.display = "block";
-			}
-			else {
-				elm.style.display = "block";
-				letter.style.display = "none";
-			}
-
-		}
-	}
-
-}		
-	
-</script> -->
 </body>
 </html>
 
-<!-- window.onload = function() {
-	var xhr = new XMLHttpRequest();
-
-
-	xhr.open('GET', 'https://dev.nexusmedia-ua.com/devtest/', true);
-
-	xhr.send();
-
-	xhr.onreadystatechange = function() {
-	  if (this.readyState != 4) return;
-	  if (this.status != 200) {
-	    // обработать ошибку
-	    alert( 'ошибка: ' + (this.status ? this.statusText : 'запрос не удался') );
-	    return;
-	  }
-
-	  var url = JSON.parse(this.responseText);
-	  for (var i=0; i<url.messages.length; i++){
-	  	var messages = document.getElementById('messages');
-	  	messages.innerHTML = '<ul id="popup-panel"><li><img src="' + url.messages[i].image + '">' + '<span>' + url.messages[i].name + '<br><small>' + url.messages[i].title + '</small></span></li>' + '<p>' + url.messages[i].message + '</p></li></ul>';
-	  }
-	}	
-}		 -->
